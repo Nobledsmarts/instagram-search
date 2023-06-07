@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Form } from './Form';
+
 type ModalProps = {
     active : boolean,
     children : React.ReactNode
@@ -8,8 +10,10 @@ type ModalProps = {
 const Modal = (props : ModalProps) => {
     const { active, children } = props;
     return (
-        <div>
-
+        <div  >
+            <Form>
+                { children }
+            </Form>
         </div>
     )
 }
