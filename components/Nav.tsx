@@ -8,7 +8,7 @@ import NavLogo from './NavLogo'
 export const Nav = () => {
   return (
     <nav className='flex justify-between py-[1.4rem] text-[1rem] leading-[2rem]'>
-        <NavLogo />
+        <NavLogo firstpart='Insta' secondpart='Search' />
         <div className='flex gap-[1rem]'>
             <NavItem />
             <NavButton />
