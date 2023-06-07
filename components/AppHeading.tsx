@@ -1,7 +1,7 @@
 import React from 'react'
 import { Montserrat } from 'next/font/google';
 
-const montserrat = Montserrat({ weight : "900", subsets : ['latin'] })
+const montserrat = Montserrat({ weight : "700", subsets : ['latin'] })
 
 type AppHeadingProps = {
     firstpart? : string,

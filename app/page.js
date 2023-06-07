@@ -22,7 +22,7 @@ export default function Home() {
               <AppHeading firstpart='Insta' secondpart='Search'/>
               <AppDesc content={appTagline} />
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-center mt-8'>
               <SearchInput 
                 placeholder='Search Something...' 
                 value={searchValue} 
