@@ -6,6 +6,16 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --blue-darker: #3D63C5;
+  --blue-hover: #3E66CD;
+  --blue-color: #436CD6;
+  --dark-blue: #1C212E;
+  --secondary: #E3256A;
+  --lightblue: #B4C5F0;
+  --lighterblue: #E5ECFE;
+  --secondary-2: 227, 37, 106, 0.12;
+  --secondary-1: 227, 37, 106, 0.21;
+  --dark-blue-light: 28, 33, 46, 0.62;
 }
 
 @media (prefers-color-scheme: dark) {

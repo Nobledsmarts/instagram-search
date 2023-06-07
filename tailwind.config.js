@@ -17,6 +17,18 @@ module.exports = {
       }
     },
     extend: {
+      colors : {
+        "blue-darker": "var(--blue-darker)",
+        "blue-hover": "var(--blue-hover)",
+        "blue-color": "var(--blue-color)",
+        "dark-blue": "var(--dark-blue)",
+        "secondary": "var(--secondary)",
+        "lightblue": "var(--lightblue)",
+        "lighterblue": "var(--lighterblue)",
+        "secondary-2": "var(--secondary-2)",
+        "secondary-1": "var(--secondary-1)",
+        "dark-blue-light": "var(--dark-blue-light)"
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
