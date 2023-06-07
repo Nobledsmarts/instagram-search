@@ -10,11 +10,11 @@ export const Form = (props : FormProps) => {
   const { children, title } = props;
 
   return (
-    <div>
+    <div className='bg-darkblue max-w-[600px]'>
       <div>
         {title}
       </div>
-      <div>
+      <div className='flex flex-col gap-4'>
         { children }
       </div>
     </div>
