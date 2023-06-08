@@ -3,16 +3,14 @@ import { IgApiClient, IgCheckpointError } from "instagram-private-api";
 import inquirer from "inquirer";
 import Bluebird from "bluebird";
 
-
-// import 
-
-
-
 export async function GET(req : NextRequest, res : NextResponse){
        const ig = new IgApiClient();
         let { IG_PASSWORD, IG_USERNAME, IG_PROXY } = process.env;
-        let { 'testing' : search, 10 : limit, 10000 : followers } = req.query;
-
+        const query = req.nextUrl.searchParams;
+        const search = query.get('search');
+        const limit = query.get('limit');
+        const followers = query.get('followers');
+        
         ig.state.generateDevice(IG_USERNAME!);
         // ig.state.proxyUrl = IG_PROXY;
         Bluebird.try(async () => {
