@@ -14,7 +14,9 @@ export const SignInModal = () => {
 
   return (
     <Modal active={false} title='Login'>
-        <FormInput onInput={changeInputValue} name='username' type='text' placeholder='Enter Username' value=''/>
+        <FormInput 
+          onInput={changeInputValue} 
+          name='username' type='text' placeholder='Enter Username' value=''/>
         <FormInput onInput={changeInputValue} name='password' type='password' placeholder='Enter Password' value=''/>
     </Modal>
   )
