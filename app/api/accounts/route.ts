@@ -1,5 +1,7 @@
 import type { NextRequest, NextResponse } from "next/server";
 import { IgApiClient } from "instagram-private-api";
+import Bluebird from "bluebird";
+// import 
 
 
 
@@ -9,7 +11,7 @@ export async function GET(req : NextRequest, res : NextResponse){
         let { 'testing' : search, 10 : limit, 10000 : followers } = req.query;
 
         ig.state.generateDevice(IG_USERNAME);
-        ig.state.proxyUrl = IG_PROXY;
+        // ig.state.proxyUrl = IG_PROXY;
         Bluebird.try(async () => {
             const auth = await ig.account.login(IG_USERNAME, IG_PASSWORD);
             let searchResults = await ig.search.users('testing');
