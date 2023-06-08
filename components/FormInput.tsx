@@ -26,7 +26,7 @@ export const FormInput = (props : FormInputProps) => {
       }
      
       <div className='flex bg-dark-blue basis-full px-1 justify-center align-center'>
-        <input className='bg-transparent w-full outline-none border-none placeholder:text-[#94A2C8] placeholder:text-[1rem]' type="text" name={name} placeholder={placeholder} value={value} onInput={onInput} />
+        <input className='bg-transparent w-full outline-none border-none placeholder:text-[#94A2C8] placeholder:text-[1rem]' type={type} name={name} placeholder={placeholder} value={value} onInput={onInput} />
       </div>
       { 
         rightIcon  &&
