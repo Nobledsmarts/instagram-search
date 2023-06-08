@@ -18,10 +18,12 @@ export const SignInModal = () => {
   }
 
 
-  const ModalMessage 
+  const ModalMessage = () => <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
+    Enter your Instagram details to connect your account
+  </div>
 
   return (
-    <Modal active={false} title='Login'>
+    <Modal active={false} title='Login' modalMessage={<ModalMessage />}>
         <FormInput
           leftIcon={<UserIcon size='16' color='#94A2C8'/>}
           onInput={changeInputValue} 
