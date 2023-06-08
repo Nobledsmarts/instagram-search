@@ -17,7 +17,7 @@ export const SignInModal = () => {
   return (
     <Modal active={false} title='Login'>
         <FormInput
-          leftIcon={<UserIcon size='16'/>}
+          leftIcon={<UserIcon size='16' color='#94A2C8'/>}
           onInput={changeInputValue} 
           name='username' 
           type='text' 
@@ -25,7 +25,7 @@ export const SignInModal = () => {
           value=''
         />
         <FormInput 
-          leftIcon={<LockIcon size='16'/>}
+          leftIcon={<LockIcon size='16' color='#94A2C8'/>}
           onInput={changeInputValue} 
           name='password' 
           type='password' 
