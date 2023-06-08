@@ -21,6 +21,7 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.8",
     "daisyui": "^3.0.4",
