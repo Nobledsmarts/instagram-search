@@ -11,14 +11,18 @@ import { SignInModal } from '@/components/SignInModal'
 export default function Home() {
   const appTagline = "A tool that allows you to scrape and download Instagram accounts that matches anything you search.";
   const [searchValue, setSearchValue] = useState("");
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const onSearchInput = (e) => {
     setSearchValue(e.target.value);
   }
+  const showLogin = (value = true) => {
+    setShowLoginModal(value);
+  }
   return (
     <div>
       <main className='container mx-auto'>
-          <Nav></Nav>
+          <Nav showLogin={showLogin}></Nav>
             <section className='flex flex-col mt-[6rem]'>
               <div className='flex justify-center flex-col w-full'>
                 <AppHeading firstpart='Insta' secondpart='Search'/>
@@ -33,7 +37,7 @@ export default function Home() {
               </div>
           </section>
       </main>
-      <SignInModal/>
+      <SignInModal active={showLoginModal} showLogin={showLogin}/>
     </div>
   )
 }

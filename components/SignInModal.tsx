@@ -5,7 +5,13 @@ import UserIcon from './UserIcon';
 import LockIcon from './LockIcon';
 import FormButton from './FormButton';
 
-export const SignInModal = () => {
+type SignInModalProps = {
+  active : boolean,
+  showLogin : React.MouseEventHandler<HTMLAnchorElement>
+}
+
+export const SignInModal = (props : SignInModalProps) => {
+  const { active, showLogin } = props;
   const [field, setField] = useState({
     username : "",
     password : ""
@@ -23,7 +29,7 @@ export const SignInModal = () => {
   </div>
 
   return (
-    <Modal active={false} title='Login' modalMessage={<ModalMessage />}>
+    <Modal active={active} title='Login' showLogin={showLogin} modalMessage={<ModalMessage />}>
         <FormInput
           leftIcon={<UserIcon size='16' color='#94A2C8'/>}
           onInput={changeInputValue} 

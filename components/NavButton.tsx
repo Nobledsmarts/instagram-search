@@ -4,9 +4,15 @@ import React from 'react'
 import Image from 'next/image'
 import UserIcon from './UserIcon'
 
-export const NavButton = ({ }) => {
+type NavButtonProps = {
+  showLogin : React.MouseEventHandler<HTMLAnchorElement>
+}
+
+export const NavButton = (props : NavButtonProps) => {
+  const { showLogin } = props;
   return (
     <Link 
+      onClick={showLogin}
       className='flex items-center justify-center gap-[4px] bg-dark-blue py-[0.25rem] px-[2.5rem] rounded-[1rem]' 
         href="#">
           <UserIcon size="18"/>
