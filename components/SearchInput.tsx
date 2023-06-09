@@ -17,13 +17,13 @@ export const SearchInput = (props : SearchInputProps) => {
         p-2 justify-center items-center rounded-[2rem]
     '>
       <div className='h-full flex bg-dark-blue px-1 justify-center items-center hover:cursor-pointer'>
-        <FilterIcon size='24'/>
+        <FilterIcon size='18'/>
       </div>
       <div className='flex bg-dark-blue px-1 justify-center align-center'>
         <input className='bg-transparent outline-none border-none placeholder:text-lighter-blue placeholder:text-[1rem]' type="text" placeholder={placeholder} value={value} onInput={onInput} />
       </div>
       <div className='flex bg-dark-blue px-1 justify-center align-center hover:cursor-pointer'>
-        <SearchIcon size='24'/>
+        <SearchIcon size='18'/>
       </div>
     </div>
   )

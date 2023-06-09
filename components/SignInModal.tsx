@@ -12,26 +12,26 @@ export const SignInModal = () => {
   const signInModal = useSigninModal((state) => state);
 
 
-  const ModalMessage = () => <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
-    Enter your Instagram details to connect your account
-  </div>
+  const ModalMessage = () => (
+    <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
+      Enter your Instagram details to connect your account
+    </div>
+  )
   
+  const onSubmit = () => {
+    
+  }
 
   const changeInputValue = (e : any) => {
     signInModal.setField(e);
-    // setField({ ...field, [e.target.name] : e.target.value });
   }
+
   useEffect(() => {
     signInModal.setModalMessage(<ModalMessage />);
   },[])
-
-useEffect(() => {
-  console.log(console.log(signInModal));
-}, [signInModal])
   
-
   return (
-      <Modal>
+      <Modal onSubmit={onSubmit}>
           <FormInput
             leftIcon={<UserIcon size='16' color='#94A2C8'/>}
             onInput={changeInputValue} 
@@ -48,7 +48,7 @@ useEffect(() => {
             placeholder='Enter Password' 
             value={signInModal?.password}
           />
-          <FormButton text="Submit"/>
+          <FormButton  text="Submit"/>
       </Modal>
   )
 }

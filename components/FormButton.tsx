@@ -8,7 +8,7 @@ type FormButtonProps = {
 const FormButton = (props : FormButtonProps) => {
     const { text } = props;
     return (
-        <button className='outline-none border-none rounded-[1rem] bg-blue-color hover:bg-blue-hover p-2'>
+        <button type='submit' className='outline-none border-none rounded-[1rem] bg-blue-color hover:bg-blue-hover p-2'>
             {text}
         </button>
     )
