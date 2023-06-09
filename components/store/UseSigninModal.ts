@@ -4,9 +4,12 @@ interface ModalStateType {
     username : any,
     password : any,
     active : any,
-    show : (value : boolean) => any,
     title : any,
     modalMessage: React.ReactNode,
+
+    show : (value : boolean) => any,
+    setModalMessage : (value : any) => any,
+    setField : (value : any) => any,
     // dispatch : React.Dispatch<any>,
   } 
 
@@ -19,5 +22,13 @@ export const useSigninModal = create<ModalStateType>()((set) => ({
     show : (value) => set((state) => ({
         ...state,
         active : value
+    })),
+    setModalMessage : (value) => set((state) => ({
+        ...state,
+        modalMessage : value
+    })),
+    setField : (field) => set((state) => ({
+        ...state,
+        [field.target.name] : field.target.value
     })),
 }));

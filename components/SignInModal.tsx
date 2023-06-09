@@ -11,23 +11,23 @@ import { useSigninModal } from './store/UseSigninModal';
 export const SignInModal = () => {
   const signInModal = useSigninModal((state) => state);
 
-  
+
   const ModalMessage = () => <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
     Enter your Instagram details to connect your account
   </div>
   
 
   const changeInputValue = (e : any) => {
-    signInModal.changeI({ action : [e.target.name], payload : e.target.value });
+    signInModal.setField(e);
     // setField({ ...field, [e.target.name] : e.target.value });
   }
   useEffect(() => {
-    dispatch({ action : 'modalMessage', payload : <ModalMessage /> });
+    signInModal.setModalMessage(<ModalMessage />);
   },[])
 
 useEffect(() => {
-  console.log(console.log(state));
-}, [state])
+  console.log(console.log(signInModal));
+}, [signInModal])
   
 
   return (
@@ -38,7 +38,7 @@ useEffect(() => {
             name='username' 
             type='text' 
             placeholder='Enter Username' 
-            value={state?.username}
+            value={signInModal?.username}
           />
           <FormInput 
             leftIcon={<LockIcon size='16' color='#94A2C8'/>}
@@ -46,7 +46,7 @@ useEffect(() => {
             name='password' 
             type='password' 
             placeholder='Enter Password' 
-            value={state?.password}
+            value={signInModal?.password}
           />
           <FormButton text="Submit"/>
       </Modal>
