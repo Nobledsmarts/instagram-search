@@ -1,10 +1,9 @@
-import React, { createContext, useState, useContext, useReducer, useEffect } from 'react'
+import React, { createContext, useState, useContext, useReducer } from 'react'
 import Modal from './Modal'
 import FormInput from './FormInput'
 import UserIcon from './UserIcon';
 import LockIcon from './LockIcon';
 import FormButton from './FormButton';
-import { UseModal } from './context/ModalContext';
 
 type SignInModalProps = {
   active : boolean,
@@ -17,52 +16,31 @@ interface ModalStateType {
   active : any,
   showLogin : any,
   title : any,
-  modalMessage: React.ReactNode,
-  // dispatch : React.Dispatch<any>,
+  changeModalState : React.Dispatch<any>,
 }
-interface ModalStateTypeContext {
-  state : ModalStateType,
-  dispatch : React.Dispatch<any>
-}
+
 const modalState:ModalStateType = {
   username : "",
   password : "",
   active : false,
-  showLogin : function(v:boolean) {
-     this.active = v ;
-    //  console.log('hhh');
-  },
-  title : "Log In",
-  modalMessage: null,
-  // dispatch : () => null,
+  showLogin : null,
+  title : "",
+  changeModalState : () => null,
 }
 
 
 const reducer = (state : any, action:any) => {
-  switch(action.type){
+  switch(action){
     case 'password' :
       return {
         ...state,
-        password : action.payload
+        password : state.payload
       }
     case 'username' :
       return {
         ...state,
-        username : action.payload
+        username : state.payload
       }
-    case 'modalMessage' :
-      return {
-        ...state,
-        modalMessage : action.payload
-      }
-    case 'showLogin' :
-      alert('working');
-      return {
-        ...state,
-        showLogin : action.payload
-      }
-    default :
-    return state;
 
   }
 };
@@ -72,19 +50,17 @@ const reducer = (state : any, action:any) => {
 //   dispatch : ({type}:{type:string}) => void,
 // }
 
-export const SignInModalContext = createContext<ModalStateTypeContext>({
+const modalContext:ModalStateType = {
   state : modalState,
-  dispatch : ({type}:{type:string}) => {
-    alert('wdym')
-  }
+};
+
+export const SignInModalContext = createContext<ModalStateType>({
+  state : modalState
 });
 
 export const SignInModal = (props : SignInModalProps) => {
   const { active, showLogin } = props;
-  const { state, dispatch } = UseModal();
-  const ModalMessage = () => <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
-    Enter your Instagram details to connect your account
-  </div>
+  const [state, changeModalState] = useReducer(reducer, modalState);
   // const [field, setField] = useState({
   //   username : "",
   //   password : ""
@@ -92,30 +68,26 @@ export const SignInModal = (props : SignInModalProps) => {
   // const [modalProps, setModalProps] = useState();
 
   // const SignInModalProvider = useContext(SignInModalContext);
-
-
-  const changeInputValue = (e : any) => {
-    dispatch({ action : [e.target.name], payload : e.target.value });
-    // setField({ ...field, [e.target.name] : e.target.value });
-  }
-  useEffect(() => {
-    dispatch({ action : 'modalMessage', payload : <ModalMessage /> });
-  },[])
-
-useEffect(() => {
-  console.log(console.log(state));
-}, [state])
   
+  // const changeInputValue = (e : any) => {
+  //   setField({ ...field, [e.target.name] : e.target.value });
+  // }
+
+
+  const ModalMessage = () => <div className='alert alert-warnin bg-inherit text-center flex justify-center border-none text-[0.8rem] rounded-none p-2'>
+    Enter your Instagram details to connect your account
+  </div>
 
   return (
-      <Modal>
+    <SignInModalContext.Provider value={state, changeModalState}>
+      <Modal active={state.active} title='Login' showLogin={state.showLogin} modalMessage={<ModalMessage />}>
           <FormInput
             leftIcon={<UserIcon size='16' color='#94A2C8'/>}
             onInput={changeInputValue} 
             name='username' 
             type='text' 
             placeholder='Enter Username' 
-            value={state?.username}
+            value={field.username}
           />
           <FormInput 
             leftIcon={<LockIcon size='16' color='#94A2C8'/>}
@@ -123,10 +95,11 @@ useEffect(() => {
             name='password' 
             type='password' 
             placeholder='Enter Password' 
-            value={state?.password}
+            value={field.password}
           />
           <FormButton text="Submit"/>
       </Modal>
+    </SignInModalContext.Provider>
   )
 }
 

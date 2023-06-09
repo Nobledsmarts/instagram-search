@@ -2,22 +2,33 @@ import type { NextRequest, NextResponse } from "next/server";
 import { IgApiClient, IgCheckpointError } from "instagram-private-api";
 import inquirer from "inquirer";
 import Bluebird from "bluebird";
+import { cookies } from "next/headers";
+
 
 export async function GET(req : NextRequest, res : NextResponse){
-       const ig = new IgApiClient();
+        let cookieStore = cookies();
+        let ig:any;
+
+        if(cookieStore.get('ig')){
+            ig = cookieStore.get('ig');
+        } else {
+            ig = new IgApiClient();
+            cookieStore.set('ig', JSON.stringify(ig));
+        }
+        // const ig = new IgApiClient();
         let { IG_PASSWORD, IG_USERNAME, IG_PROXY } = process.env;
         const query = req.nextUrl.searchParams;
         const search = query.get('search');
         const limit = query.get('limit');
         const followers = query.get('followers');
-        
+
         ig.state.generateDevice(IG_USERNAME!);
         // ig.state.proxyUrl = IG_PROXY;
         Bluebird.try(async () => {
             const auth = await ig.account.login(IG_USERNAME!, IG_PASSWORD!);
             let searchResults = await ig.search.users('testing');
 
-            let withFollowersCount = await Promise.all([... search.slice(0, 5)].map(async (searchResult) => {
+            let withFollowersCount = await Promise.all([... searchResults.slice(0, 5)].map(async (searchResult) => {
                 let accountInfo = await ig.user.info(searchResult.pk);
                 return {
                     ...searchResults,
