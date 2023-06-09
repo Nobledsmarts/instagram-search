@@ -18,8 +18,33 @@ export const SignInModal = () => {
     </div>
   )
   
-  const onSubmit = () => {
+  const onSubmit = async (e) => {
+    
+    e.preventDefault();
 
+    console.log({
+      login : signInModal.username,
+      password : signInModal.password
+    });
+    
+    try {
+      let response = await fetch('/api/login', {
+        method : 'post',
+        headers : {
+          'Content-Type' : 'application/json',
+          'X-Requested-With' : 'XMLHttpRequest'
+        },
+        body : JSON.stringify({
+          login : signInModal.username,
+          password : signInModal.password
+        })
+      });
+      let login = await response.json();
+
+      console.log(login);
+    } catch (err){
+      console.log(err);
+    }
   }
 
   const changeInputValue = (e : any) => {
@@ -48,7 +73,7 @@ export const SignInModal = () => {
             placeholder='Enter Password' 
             value={signInModal?.password}
           />
-          <FormButton  text="Submit"/>
+          <FormButton text="Submit"/>
       </Modal>
   )
 }

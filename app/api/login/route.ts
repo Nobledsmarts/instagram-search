@@ -1,20 +1,20 @@
-import type { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+
 import { IgApiClient, IgCheckpointError } from "instagram-private-api";
 import inquirer from "inquirer";
 import Bluebird from "bluebird";
 import { cookies } from "next/headers";
 
 
-export async function POST(req : NextRequest, res : NextResponse){
+export async function POST(req : NextRequest){
     let cookieStore = cookies();
     let ig = new IgApiClient();
-    const query = req.nextUrl.searchParams;
+    let credentials = await req.json();
+    const login = credentials.login;
+    const password = credentials.password;
 
-    const search = query.get('search');
-    const limit = query.get('limit');
-
-
-
+    return NextResponse.json({ password, login });
     // if(cookieStore.get('ig')){
     //     ig = cookieStore.get('ig');
     // } else {

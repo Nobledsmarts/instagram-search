@@ -13,8 +13,6 @@ type FormInputProps = {
 export const FormInput = (props : FormInputProps) => {
   const { name, type = 'text', onInput, placeholder, value, rightIcon, leftIcon } = props;
 
-  // outline outline-offset-4 
-        // outline- outline-dark-blue
   return (
     <div className='
         border-solid border-[0.5px] border-[#596688]
