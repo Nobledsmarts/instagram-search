@@ -31,7 +31,7 @@ export const SignInModal = () => {
   },[])
   
   return (
-      <Modal modal={signInModal} onSubmit={onSubmit} active={signInModal.active}>
+      <Modal modal={signInModal} onSubmit={onSubmit}>
           <FormInput
             leftIcon={<UserIcon size='16' color='#94A2C8'/>}
             onInput={changeInputValue} 
