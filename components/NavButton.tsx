@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import UserIcon from './UserIcon'
-import { useSigninModal } from './store/UseSigninModal'
+import { useSigninModal } from '../store/UseSigninModal'
 
 
 export const NavButton = () => {

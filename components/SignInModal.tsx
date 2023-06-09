@@ -5,7 +5,7 @@ import UserIcon from './UserIcon';
 import LockIcon from './LockIcon';
 import FormButton from './FormButton';
 
-import { useSigninModal } from './store/UseSigninModal';
+import { useSigninModal } from '../store/UseSigninModal';
 
 
 export const SignInModal = () => {
@@ -19,7 +19,7 @@ export const SignInModal = () => {
   )
   
   const onSubmit = () => {
-    
+
   }
 
   const changeInputValue = (e : any) => {
@@ -31,7 +31,7 @@ export const SignInModal = () => {
   },[])
   
   return (
-      <Modal onSubmit={onSubmit}>
+      <Modal modal={signInModal} onSubmit={onSubmit} active={signInModal.active}>
           <FormInput
             leftIcon={<UserIcon size='16' color='#94A2C8'/>}
             onInput={changeInputValue} 
